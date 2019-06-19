@@ -36,7 +36,7 @@ if __name__ == '__main__':
         except FileNotFoundError:
             logging.info('Loading whole data. Getting random sample...')
             docs = pickle.load(open(
-                os.path.join(params.datapath, 'word_inx_docs_2.pickle', 'rb')))
+                os.path.join(params.datapath, 'word_inx_docs_2.pickle'), 'rb'))
             random.shuffle(docs)
             docs = docs[:dataset_size]
             pickle.dump(docs, open(
