@@ -10,7 +10,6 @@ import pickle
 import csv
 import os
 
-
 NUM_PROCESSORS = 12
 UNK = '<UNK>'
 
@@ -69,8 +68,8 @@ def default_pipe(data_gzip='../wiki150k',
 
     pool = Pool(NUM_PROCESSORS)
     all_contexts = list(tqdm(pool.map(make_contexts,
-                        tqdm([(_['content_moses_lemmas'])
-                              for _ in tqdm(data)]))))
+                                      tqdm([(_['content_moses_lemmas'])
+                                            for _ in tqdm(data)]))))
     pool.close()
     del pool
 
@@ -99,7 +98,7 @@ def default_pipe(data_gzip='../wiki150k',
             docs_count += 1
     # del selected_items
 
-    dictionary_df_rate = {w: d/docs_count for w, d in dictionary_df.items()}
+    dictionary_df_rate = {w: d / docs_count for w, d in dictionary_df.items()}
     # filter by min_df=45, max_df_rate=.02
     min_df_selected = {w for w, d in dictionary_df.items() if d >= 45}
     max_df_rate_selected = {w for w, d in dictionary_df_rate.items()
@@ -109,6 +108,7 @@ def default_pipe(data_gzip='../wiki150k',
     dictionary.setdefault(UNK, len(dictionary))
 
     word_inx_docs = []
+    empty_docs_count = 0
     for k, docs in selected_items:
         for doc in docs:
             _doc = []
@@ -116,40 +116,25 @@ def default_pipe(data_gzip='../wiki150k',
                 _doc.append(
                     dictionary.get(w, dictionary[UNK])
                 )
-            word_inx_docs.append(_doc)
+
+            if len([i for i in _doc if i != dictionary[UNK]]) == 0:
+                empty_docs_count += 1
+            else:
+                word_inx_docs.append(_doc)
     del selected_items
 
     if dump_flag is True:
         if dump_folder is None or not os.path.exists(dump_folder):
             dump_folder = '/tmp'
         pickle.dump(word_inx_docs, open(os.path.join(dump_folder,
-                                        'word_inx_docs.pickle', 'wb')))
+                                                     'word_inx_docs_2.pickle',
+                                                     'wb')))
         pickle.dump(dictionary, open(os.path.join(dump_folder,
-                                     'dictionary.pickle', 'wb')))
+                                                  'dictionary.pickle', 'wb')))
 
+    print('Len of word_inx_docs: {}'.format(len(word_inx_docs)))
+    print('Empty_docs count: {}'.format(empty_docs_count))
     return word_inx_docs, dictionary
-
-
-def artm_vocab_stat(artm_dict_path=None):
-    dictionary = dict()
-    vocab_stat = dict()
-    with open(artm_dict_path) as f:
-        csvr = csv.reader(f)
-        next(csvr)  # skip header line 1
-        next(csvr)  # skip header line 2
-        for line in csvr:
-            token = line[0]
-            try:
-                token_value = float(line[2])
-            except:
-                # '1,600'
-                token_value = float(line[3])
-            dictionary.setdefault(token, len(dictionary))
-            vocab_stat[token] = token_value
-    dictionary.setdefault(UNK, len(dictionary))
-    vocab_stat[UNK] = 1e-03
-    pickle.dump(vocab_stat, open('../data/vocab_stat.pickle', 'wb'))
-    pickle.dump(vocab_stat, open('../data_sample/vocab_stat.pickle', 'wb'))
 
 
 def bigartm_dict_pipe(artm_dict_path=None,
@@ -178,8 +163,9 @@ def bigartm_dict_pipe(artm_dict_path=None,
 
     pool = Pool(NUM_PROCESSORS)
     all_contexts = list(tqdm(pool.starmap(make_contexts,
-                        tqdm([(_['content_moses_lemmas'], 5, dictionary)
-                              for _ in tqdm(data)]))))
+                                          tqdm([(_['content_moses_lemmas'], 5,
+                                                 dictionary)
+                                                for _ in tqdm(data)]))))
     pool.close()
     del pool
 
@@ -196,18 +182,25 @@ def bigartm_dict_pipe(artm_dict_path=None,
     random.shuffle(selected_items)
 
     word_inx_docs = []
+    empty_docs_count = 0
     for k, docs in selected_items:
         for doc in docs:
-            word_inx_docs.append(doc)
+            if len([i for i in doc if i != dictionary[UNK]]) == 0:
+                empty_docs_count += 1
+            else:
+                word_inx_docs.append(doc)
 
     if dump_flag is True:
         if dump_folder is None or not os.path.exists(dump_folder):
             dump_folder = '/tmp'
         pickle.dump(word_inx_docs, open(os.path.join(dump_folder,
-                                        'word_inx_docs.pickle'), 'wb'))
+                                                     'word_inx_docs_2.pickle'),
+                                        'wb'))
         pickle.dump(dictionary, open(os.path.join(dump_folder,
-                                     'dictionary.pickle'), 'wb'))
+                                                  'dictionary.pickle'), 'wb'))
 
+    print('Len of word_inx_docs: {}'.format(len(word_inx_docs)))
+    print('Empty_docs count: {}'.format(empty_docs_count))
     return word_inx_docs, dictionary
 
 
@@ -216,7 +209,6 @@ def main(bigartm_dict_path=None,
          size=1000,
          dump_flag=True,
          dump_folder=None):
-
     if bigartm_dict_path is None:
         print('Run default pipe..')
         return default_pipe(data_gzip=data_gzip,
@@ -232,19 +224,3 @@ def main(bigartm_dict_path=None,
             dump_flag=dump_flag,
             dump_folder=dump_folder
         )
-
-
-if __name__ == '__main__':
-    # word_inx_docs, dictionary = main(
-    #     bigartm_dict_path='../data/artm_dict.txt',
-    #     data_gzip='../../wiki150k.zip',
-    #     size=1000,
-    #     dump_folder='../data_sample'
-    # )
-    # x = 1
-    # print(len(word_inx_docs))
-    # print(word_inx_docs[0])
-    # print(len(dictionary))
-    # # print(dictionary)
-
-    artm_vocab_stat('../data/artm_dict.txt')

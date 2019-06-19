@@ -6,6 +6,7 @@ descs/
 !data/*.pickle
 !data_sample/*.pickle
 *.npy
+*.log
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
