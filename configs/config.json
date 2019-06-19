@@ -6,7 +6,7 @@
   "phi_smooth_sparse_tau": -0.1,
   "theta_smooth_sparse_tau": -1.0,
   "train_mode": "v1",
-  "num_collection_passes": 2,
+  "num_collection_passes": 30,
   "num_documents_passes": 1,
   "batch_size": 10000,
 
@@ -17,7 +17,7 @@
   "num_workers": 12,
   "device": "cuda:0",
   "datapath": "./data",
-  "dump_phi": false,
+  "dump_phi": true,
   "dump_phi_freq": null,
   "log_path": "./log.log",
   "debug": false,
