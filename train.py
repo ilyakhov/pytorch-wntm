@@ -7,6 +7,7 @@ import logging
 import pickle
 
 import torch
+import torch.backends.cudnn
 from torch.utils.data import DataLoader
 
 from input_fn import WNTMDataSet
@@ -16,6 +17,9 @@ from utils.get_desc import get_desc
 
 
 if __name__ == '__main__':
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+
     parser = argparse.ArgumentParser()
     parser.add_argument('--config', '-c', type=str,
                         default='configs/config.json')
@@ -24,10 +28,13 @@ if __name__ == '__main__':
     set_logger(params.log_path)
     logging.info(params.dumps())
 
+    seed = params.seed
+    random.seed(seed)
+    torch.cuda.manual_seed(seed)
+    torch.manual_seed(seed)
+    np.random.seed(seed)
+
     if not params.debug:
-        seed = params.seed
-        random.seed(seed)
-        torch.cuda.manual_seed(seed)
         dataset_size = params.dataset_size
         try:
             logging.info('Loading data sample...')
@@ -49,14 +56,18 @@ if __name__ == '__main__':
     logging.info('Loading dictionary...')
     vocab = pickle.load(open(os.path.join(params.datapath,
                                           'dictionary.pickle'), 'rb'))
-    logging.info('Loading vocab_stat...')
-    _vocab_stat = pickle.load(open(os.path.join(params.datapath,
-                                                'vocab_stat.pickle'), 'rb'))
-    # crook
-    inversed_vocab = {i: v for v, i in vocab.items()}
-    vocab_stat = []
-    for k in sorted(inversed_vocab.keys()):
-        vocab_stat.append(_vocab_stat[inversed_vocab[k]])
+
+    if params.__dict__.get('phi_reg_use_vocab_stat', None):
+        logging.info('Loading vocab_stat...')
+        _vocab_stat = pickle.load(open(os.path.join(params.datapath,
+                                                    'vocab_stat.pickle'), 'rb'))
+        # crook
+        inversed_vocab = {i: v for v, i in vocab.items()}
+        vocab_stat = []
+        for k in sorted(inversed_vocab.keys()):
+            vocab_stat.append(_vocab_stat[inversed_vocab[k]])
+    else:
+        vocab_stat = None
 
     context_size = params.context_size
     device = torch.device(params.device)
@@ -74,13 +85,15 @@ if __name__ == '__main__':
                           shuffle=True, num_workers=num_workers)
 
     train_mode = params.train_mode
-    epochs = params.num_collection_passes
 
-    epochs1 = params.num_collection_passes_step1
-    epochs2 = params.num_collection_passes_step2
+    two_steps = params.two_steps
+    if two_steps is False:
+        epochs = params.num_collection_passes
+    else:
+        epochs1 = params.num_collection_passes_step1
+        epochs2 = params.num_collection_passes_step2
 
     n_topics = params.n_topics
-    two_steps = params.two_steps
     num_documents_passes = params.num_documents_passes
 
     epochs = epochs1 + epochs2 if two_steps else epochs
@@ -153,4 +166,4 @@ if __name__ == '__main__':
     if params.desc2log is True:
         inversed_vocab = {i: v for v, i in vocab.items()}
         for t, words in get_desc(phi, 25, inversed_vocab, th=0.5).items():
-            logging.info(f'{t} — {words}\n')
+            logging.info(f'{t} — {words}')

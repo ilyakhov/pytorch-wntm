@@ -88,10 +88,18 @@ class WNTM_pLSA:
 
     def __init_matrices(self):
         with torch.cuda.device(self.device):
-            dist = torch.distributions.Normal(loc=torch.Tensor([0.5]),
-                                              scale=torch.Tensor([0.1]))  # 0.5
+            # _dist = 'normal'
+            # loc = 0.5
+            # scale = 0.1
+            # logging.info(f'{_dist}: loc — {loc}; scale — {scale}')
+            #
+            # dist = torch.distributions.Normal(loc=torch.Tensor([loc]),
+            #                                   scale=torch.Tensor([scale]))  # 0.5
 
-            # dist = torch.distributions.Uniform(0, 1)
+            _dist = 'uniform: [0,1)'
+            dist = torch.distributions.Uniform(0, 1)
+            logging.info(f'{_dist}')
+
             self.phi = dist.sample((self.vocab_size, self.n_topics))
             self.phi = self.phi.view((self.vocab_size, self.n_topics))
             self.theta = dist.sample((self.n_topics, self.doc_count))
@@ -109,15 +117,20 @@ class WNTM_pLSA:
             self.theta = torch.where(self.theta > self.one,
                                      self.one - 0.001,
                                      self.theta)
-            self.zero = self.zero.cuda(self.device)
-            self.one = self.one.cuda(self.device)
 
             # norm
             self.phi /= self.phi.sum(dim=0, keepdim=True)
             self.theta /= self.theta.sum(dim=0, keepdim=True)
 
+            # drop nans
+            self.phi = torch.where(self.phi != self.phi, self.zero, self.phi)
+            self.theta = torch.where(self.theta != self.theta, self.zero,
+                                     self.theta)
+
             self.phi = self.phi.cuda(self.device)
             self.theta = self.theta.cuda(self.device)
+            self.zero = self.zero.cuda(self.device)
+            self.one = self.one.cuda(self.device)
 
             self.context_size = torch.LongTensor([self.context_size]).to(
                 self.device)
@@ -143,7 +156,7 @@ class WNTM_pLSA:
                                        dtype=self.dtype).view(-1, 1)
         else:
             # uniform beta for phi sparse reg
-            self.beta_w = torch.tensor([1/self.vocab_size]*self.vocab_size,
+            self.beta_w = torch.tensor(1/self.vocab_size,
                                        device=self.device,
                                        dtype=self.dtype).view(-1, 1)
 

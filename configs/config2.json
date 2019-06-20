@@ -1,12 +1,13 @@
 {
-  "seed": 4242,
+  "seed": 0,
   "dataset_size": 2000000,
   "context_size": 5,
   "n_topics": 400,
   "phi_smooth_sparse_tau": -0.1,
-  "theta_smooth_sparse_tau": -1.0,
+  "theta_smooth_sparse_tau": -2.0,
+  "phi_reg_use_vocab_stat": false,
   "train_mode": "v1",
-  "num_collection_passes": 30,
+  "num_collection_passes": 15,
   "num_documents_passes": 1,
   "batch_size": 10000,
 

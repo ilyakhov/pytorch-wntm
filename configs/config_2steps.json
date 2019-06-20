@@ -10,9 +10,9 @@
   "num_documents_passes": 1,
   "batch_size": 10000,
 
-  "two_steps": false,
+  "two_steps": true,
   "num_collection_passes_step1": 10,
-  "num_collection_passes_step2": 15,
+  "num_collection_passes_step2": 20,
 
   "num_workers": 12,
   "device": "cuda:0",
