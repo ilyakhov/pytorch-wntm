@@ -107,7 +107,7 @@ class WNTM_pLSA:
 
             cpu_device = 'cpu:0'
             self.zero = torch.tensor(.0, dtype=self.dtype, device=cpu_device)
-            self.one = torch.tensor(.1, dtype=self.dtype, device=cpu_device)
+            self.one = torch.tensor(1., dtype=self.dtype, device=cpu_device)
             self.phi = torch.where(self.phi < self.zero,
                                    self.zero, self.phi)
             self.phi = torch.where(self.phi > self.one,
