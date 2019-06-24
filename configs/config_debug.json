@@ -7,7 +7,7 @@
   "theta_smooth_sparse_tau": 10,
   "phi_reg_use_vocab_stat": true,
   "train_mode": "v1",
-  "num_collection_passes": 60,
+  "num_collection_passes": 20,
   "num_documents_passes": 1,
   "batch_size": 10000,
 

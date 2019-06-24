@@ -37,7 +37,7 @@ def get_desc(phi, n_objcts, inversed_dictionary=None, th=0.5):
 
 if __name__ == '__main__':
     import pickle
-    phi = np.load('../1500000_phi_reg-phiNone_reg-thetNone_epochs25_mv1.npy')
+    phi = np.load('../trained_phi/1500000_phi_reg-phiNone_reg-thetNone_epochs25_mv1.npy')
     vocab = pickle.load(open('../data_sample/dictionary.pickle', 'rb'))
     inversed_vocab = {i: v for v, i in vocab.items()}
 

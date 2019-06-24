@@ -65,9 +65,10 @@ class WNTM_pLSA:
         if self.phi_smooth_sparse_tau is not None and\
                 self.theta_smooth_sparse_tau is not None:
             self.vocab_stat = vocab_stat
-            self.__init_regularizers()
+        self.__init_regularizers()
 
         self.phi_log = []
+        self.theta_log = []
 
         if mode == 'v1':
             self.run = self.run
@@ -94,7 +95,8 @@ class WNTM_pLSA:
             # logging.info(f'{_dist}: loc — {loc}; scale — {scale}')
             #
             # dist = torch.distributions.Normal(loc=torch.Tensor([loc]),
-            #                                   scale=torch.Tensor([scale]))  # 0.5
+            #                                   scale=torch.Tensor([scale]))
+            # 0.5
 
             _dist = 'uniform: [0,1)'
             dist = torch.distributions.Uniform(0, 1)
@@ -123,9 +125,16 @@ class WNTM_pLSA:
             self.theta /= self.theta.sum(dim=0, keepdim=True)
 
             # drop nans
-            self.phi = torch.where(self.phi != self.phi, self.zero, self.phi)
-            self.theta = torch.where(self.theta != self.theta, self.zero,
-                                     self.theta)
+            # self.phi = torch.where(self.phi != self.phi, self.zero, self.phi)
+            # self.theta = torch.where(self.theta != self.theta, self.zero,
+            #                          self.theta)
+            # assert torch.sum(torch.isnan(self.phi)) == 0
+            # assert torch.sum(torch.isnan(self.theta)) == 0
+
+            assert not np.any(
+                torch.sum(torch.isnan(self.phi)).numpy() > 0)
+            assert not np.any(
+                torch.sum(torch.isnan(self.theta)).numpy() > 0)
 
             self.phi = self.phi.cuda(self.device)
             self.theta = self.theta.cuda(self.device)
@@ -182,6 +191,8 @@ class WNTM_pLSA:
             self.steps_trained += 1
             logging.info(f'Phi norm: {self.phi_log[self.steps_trained-1]}; '
                          f'step: {self.steps_trained}')
+            logging.info(f'Theta norm: {self.theta_log[self.steps_trained-1]}; '
+                         f'step: {self.steps_trained}')
 
             if self.dump_phi_freq and \
                     (self.steps_trained) % self.dump_phi_freq == 0:
@@ -229,10 +240,9 @@ class WNTM_pLSA:
             denominator = torch.sum(phi_w * theta_d, dim=2, keepdim=True)
             # [batch_size, context_size, n_topics]
             n_tdw = numerator / denominator
-            n_tdw = torch.where(n_tdw != n_tdw, self.zero, n_tdw)
+            # n_tdw = torch.where(n_tdw != n_tdw, self.zero, n_tdw)
+            n_tdw[torch.isnan(n_tdw)] = self.zero
 
-            # [batch_size*context_size]
-            context_1d_mask = context_batch.view(-1)
             # [batch_size*context_size, n_topics]
             n_tdw_context = n_tdw.view(-1, self.n_topics)
             # [batch_size, n_topics]
@@ -241,6 +251,8 @@ class WNTM_pLSA:
             n_tdw_t = n_tdw.sum(1).sum(0)
             n_tdw_d = n_tdw.sum(2).sum(1)
 
+            # [batch_size*context_size]
+            context_1d_mask = context_batch.view(-1)
             wt_index = context_1d_mask.long().cuda(self.device)
             n_wt_update, wt_index = self._group_by_with_index_mapping(
                 wt_index, n_tdw_context)
@@ -281,7 +293,7 @@ class WNTM_pLSA:
     def m_step(self):
         with torch.cuda.device(self.device):
             new_phi = self.n_wt / self.n_t.view(-1, self.n_topics)
-            phi_norm = torch.sum((self.phi - new_phi)**2)
+            phi_norm = (torch.sum((self.phi - new_phi)**2)**1/2)
             self.phi_log.append(phi_norm.cpu().numpy())
             self.phi = new_phi
             self.theta = self.n_td / self.n_d.view(-1, self.doc_count)
@@ -294,12 +306,17 @@ class WNTM_pLSA:
             t = t.cpu()
             t = torch.where(t < self.zero.cpu(), self.zero.cpu(), t)
             # t[torch.isnan(t)] = self.zero.cpu()
-            t = torch.where(t != t, self.zero.cpu(), t)
+            # t = torch.where(t != t, self.zero.cpu(), t)
+
+            assert not np.any(
+                torch.sum(torch.isnan(t)).numpy() > 0)
             return t.cuda()
         else:
             t = torch.where(t < self.zero, self.zero, t)
-            t = torch.where(t != t, self.zero, t)
-        return t
+            # t = torch.where(t != t, self.zero, t)
+            assert not np.any(
+                torch.sum(torch.isnan(t)).cpu().numpy() > 0)
+            return t
 
     def m_step_smoothed_sparsed(self):
         with torch.cuda.device(self.device):
@@ -308,6 +325,7 @@ class WNTM_pLSA:
             beta = torch.tensor([self.phi_smooth_sparse_tau],
                                 device=self.device, dtype=self.dtype)
             old_phi = self.phi.cpu()
+            old_theta = self.theta.cpu()
 
             self.phi = (self.n_wt + beta*self.beta_w)
             self.phi /= torch.sum(self.phi, dim=0, keepdim=True)
@@ -318,8 +336,13 @@ class WNTM_pLSA:
             self.theta = self.__rectify(self.theta)
 
             phi_norm = \
-                torch.sum((self.phi.cpu().float() - old_phi.float()) ** 2)
-            self.phi_log.append(phi_norm.cpu().numpy())
+                (torch.sum((self.phi.cpu().float() - old_phi.float()) ** 2)
+                 ** 1/2)
+            theta_norm = \
+                (torch.sum((self.theta.cpu().float() - old_theta.float()) ** 2)
+                 ** 1/2)
+            self.phi_log.append(phi_norm.numpy())
+            self.theta_log.append(theta_norm.numpy())
 
     def run_v2(self, batch_generator):
         """
@@ -339,7 +362,8 @@ class WNTM_pLSA:
             assert not np.any(torch.sum(torch.isnan(self.phi.cpu())).numpy() > 0)
 
             phi_norm = \
-                torch.sum((self.phi.cpu().float() - old_phi.float()) ** 2)
+                (torch.sum((self.phi.cpu().float() - old_phi.float()) ** 2)
+                 ** 1/2)
             self.phi_log.append(phi_norm.cpu().numpy())
             self.__init_aux_vars()
 
