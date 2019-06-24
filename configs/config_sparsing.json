@@ -4,7 +4,7 @@
   "context_size": 5,
   "n_topics": 400,
   "phi_smooth_sparse_tau": -0.1,
-  "theta_smooth_sparse_tau": -10.0,
+  "theta_smooth_sparse_tau": -0.001,
   "phi_reg_use_vocab_stat": true,
   "train_mode": "v1",
   "num_collection_passes": 100,

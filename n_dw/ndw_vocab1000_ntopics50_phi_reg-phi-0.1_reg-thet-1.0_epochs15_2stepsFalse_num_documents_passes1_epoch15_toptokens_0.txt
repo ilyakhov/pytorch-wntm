@@ -1,0 +1,100 @@
+topic_0 — edu:0.063 | university:0.033 | don:0.031 | subject:0.029 | writes:0.028 | organization:0.027 | think:0.026 | mark:0.017 | columbia:0.016 | israeli:0.015 | posting:0.014 | did:0.013 | consider:0.012 | case:0.012 | oh:0.011 | lines:0.011 | true:0.010 | sgi:0.010 | host:0.009 | people:0.009
+
+topic_1 — god:0.105 | believe:0.029 | christians:0.027 | christian:0.024 | faith:0.023 | truth:0.023 | say:0.022 | moral:0.021 | religion:0.020 | morality:0.018 | objective:0.016 | atheists:0.016 | belief:0.016 | exist:0.015 | existence:0.015 | does:0.014 | human:0.013 | religious:0.013 | question:0.013 | atheism:0.012
+
+topic_2 — 55:0.085 | ma:0.069 | 17:0.054 | cx:0.053 | tape:0.050 | 27:0.032 | 50:0.031 | 24:0.029 | 80:0.027 | 75:0.025 | se:0.023 | 37:0.022 | 60:0.016 | 45:0.015 | id:0.014 | hi:0.014 | ai:0.013 | 35:0.013 | air:0.013 | 3d:0.012
+
+topic_3 — uk:0.019 | appears:0.016 | apr:0.016 | message:0.016 | new:0.015 | edu:0.014 | good:0.012 | discussion:0.011 | time:0.011 | order:0.011 | received:0.011 | way:0.011 | law:0.010 | usenet:0.010 | subject:0.010 | read:0.010 | 10:0.009 | make:0.009 | probably:0.009 | knowledge:0.009
+
+topic_4 — 00:0.073 | 10:0.052 | 20:0.037 | 14:0.033 | 15:0.028 | 18:0.027 | 13:0.025 | 12:0.023 | 30:0.022 | 26:0.021 | 11:0.020 | 16:0.019 | 17:0.019 | 22:0.019 | 19:0.018 | 25:0.017 | 24:0.017 | 50:0.017 | 21:0.017 | 28:0.015
+
+topic_5 — com:0.108 | organization:0.074 | lines:0.073 | subject:0.070 | reply:0.028 | newsreader:0.020 | bbs:0.019 | apr:0.015 | nntp:0.015 | world:0.015 | bnr:0.015 | tin:0.013 | private:0.013 | bike:0.012 | gmt:0.012 | host:0.012 | net:0.011 | 13:0.011 | 21:0.011 | usa:0.010
+
+topic_6 — good:0.037 | subject:0.033 | lines:0.031 | organization:0.029 | uiuc:0.028 | computer:0.027 | edu:0.027 | service:0.022 | like:0.021 | rochester:0.020 | posting:0.019 | cso:0.017 | need:0.017 | don:0.016 | host:0.015 | nntp:0.015 | john:0.015 | illinois:0.014 | news:0.013 | radio:0.013
+
+topic_7 — gov:0.038 | nasa:0.030 | research:0.026 | center:0.024 | problems:0.022 | april:0.020 | 20:0.019 | 30:0.018 | speed:0.015 | engine:0.014 | organization:0.014 | test:0.014 | 12:0.012 | subject:0.012 | 14:0.010 | old:0.010 | writes:0.009 | 32:0.009 | months:0.009 | help:0.009
+
+topic_8 — windows:0.049 | files:0.031 | image:0.029 | software:0.028 | edu:0.025 | file:0.023 | ftp:0.020 | data:0.019 | color:0.017 | program:0.016 | format:0.015 | os:0.014 | bit:0.014 | graphics:0.014 | images:0.013 | mac:0.012 | programs:0.012 | version:0.012 | available:0.012 | internet:0.012
+
+topic_9 — 145:0.109 | 0d:0.083 | a86:0.073 | 34u:0.064 | b8f:0.062 | 2di:0.051 | 0t:0.051 | pl:0.041 | 1d9:0.040 | 75u:0.039 | 34:0.031 | max:0.031 | ah:0.030 | 3t:0.027 | 45:0.024 | g9v:0.023 | air:0.016 | 1t:0.015 | mr:0.015 | wm:0.015
+
+topic_10 — posting:0.105 | host:0.104 | nntp:0.103 | access:0.064 | edu:0.051 | organization:0.047 | subject:0.046 | lines:0.045 | caltech:0.039 | digex:0.034 | keith:0.028 | net:0.026 | pat:0.026 | eng:0.023 | institute:0.020 | communications:0.018 | usa:0.017 | thanks:0.016 | com:0.015 | technology:0.015
+
+topic_11 — going:0.044 | think:0.029 | want:0.029 | good:0.024 | trying:0.023 | say:0.022 | make:0.018 | don:0.018 | people:0.016 | tell:0.015 | ground:0.014 | try:0.013 | probably:0.012 | better:0.011 | doing:0.011 | ll:0.011 | school:0.011 | lot:0.011 | things:0.011 | like:0.011
+
+topic_12 — edu:0.039 | like:0.027 | david:0.027 | subject:0.027 | organization:0.025 | andrew:0.023 | lines:0.023 | know:0.021 | mail:0.021 | looking:0.019 | thanks:0.016 | card:0.015 | university:0.015 | cmu:0.014 | help:0.014 | don:0.014 | windows:0.014 | reply:0.013 | driver:0.013 | memory:0.011
+
+topic_13 — lines:0.024 | 15:0.023 | book:0.020 | com:0.020 | know:0.019 | ve:0.017 | dos:0.017 | day:0.016 | work:0.015 | like:0.015 | don:0.014 | article:0.014 | road:0.013 | reply:0.012 | east:0.011 | distribution:0.011 | change:0.010 | berkeley:0.010 | source:0.010 | end:0.009
+
+topic_14 — edu:0.134 | university:0.071 | lines:0.053 | organization:0.049 | subject:0.043 | nntp:0.033 | host:0.032 | posting:0.026 | keywords:0.017 | washington:0.017 | msg:0.015 | thanks:0.015 | help:0.014 | article:0.013 | cc:0.013 | pittsburgh:0.012 | cmu:0.012 | use:0.011 | buffalo:0.010 | reply:0.008
+
+topic_15 — like:0.057 | don:0.034 | people:0.029 | think:0.025 | lot:0.020 | power:0.018 | good:0.017 | really:0.016 | right:0.014 | make:0.013 | better:0.012 | organization:0.011 | know:0.011 | big:0.011 | opinions:0.010 | probably:0.010 | just:0.010 | ca:0.009 | car:0.009 | years:0.009
+
+topic_16 — new:0.056 | org:0.056 | db:0.045 | al:0.031 | tv:0.019 | organization:0.018 | lines:0.018 | need:0.016 | 1993:0.014 | public:0.012 | case:0.012 | higher:0.012 | look:0.012 | stuff:0.011 | report:0.011 | subject:0.010 | study:0.009 | west:0.009 | time:0.009 | does:0.008
+
+topic_17 — just:0.044 | think:0.033 | won:0.028 | way:0.023 | didn:0.021 | know:0.019 | edu:0.017 | really:0.017 | light:0.016 | lost:0.016 | article:0.016 | want:0.015 | red:0.014 | state:0.014 | 02:0.013 | did:0.013 | 03:0.013 | problem:0.012 | subject:0.011 | writes:0.011
+
+topic_18 — people:0.036 | right:0.024 | water:0.020 | son:0.019 | body:0.018 | way:0.015 | earth:0.015 | work:0.013 | say:0.013 | use:0.012 | went:0.012 | don:0.011 | weapons:0.011 | government:0.011 | law:0.010 | things:0.010 | father:0.010 | said:0.009 | point:0.009 | high:0.009
+
+topic_19 — mouse:0.035 | does:0.029 | good:0.024 | display:0.023 | want:0.022 | set:0.018 | subject:0.017 | robert:0.017 | using:0.017 | like:0.016 | works:0.016 | organization:0.014 | evidence:0.012 | error:0.011 | work:0.011 | lines:0.010 | know:0.010 | god:0.010 | ve:0.010 | com:0.009
+
+topic_20 — edu:0.052 | article:0.034 | writes:0.032 | people:0.029 | israel:0.029 | believe:0.020 | don:0.020 | hell:0.019 | know:0.016 | life:0.015 | does:0.015 | death:0.013 | lines:0.013 | like:0.011 | doesn:0.011 | fact:0.011 | state:0.011 | way:0.009 | love:0.009 | man:0.008
+
+topic_21 — people:0.033 | use:0.022 | fbi:0.021 | used:0.019 | government:0.018 | question:0.015 | evidence:0.014 | security:0.013 | article:0.013 | example:0.013 | true:0.012 | human:0.011 | rights:0.011 | using:0.010 | writes:0.010 | law:0.009 | point:0.009 | argument:0.008 | claim:0.008 | things:0.008
+
+topic_22 — com:0.101 | subject:0.017 | sale:0.014 | stratus:0.014 | texas:0.014 | offer:0.013 | ve:0.012 | run:0.012 | rate:0.012 | unit:0.011 | corporation:0.011 | control:0.011 | new:0.011 | memory:0.010 | lines:0.010 | drivers:0.010 | technology:0.009 | uucp:0.009 | cars:0.008 | article:0.008
+
+topic_23 — ax:0.861 | max:0.063 | b8f:0.009 | pl:0.008 | giz:0.006 | 1t:0.006 | 1d9:0.006 | bhj:0.005 | 2tm:0.005 | 3t:0.005 | a86:0.005 | wm:0.003 | 75u:0.003 | 0t:0.003 | 34u:0.002 | 145:0.001 | g9v:0.001 | 75:0.001 | 04:0.001 | 2di:0.001
+
+topic_24 — edu:0.048 | lines:0.041 | organization:0.037 | subject:0.036 | version:0.024 | computer:0.023 | pc:0.022 | mac:0.019 | monitor:0.019 | video:0.018 | fax:0.016 | card:0.016 | hp:0.015 | problem:0.013 | ibm:0.013 | university:0.013 | screen:0.012 | modem:0.012 | does:0.011 | 800:0.010
+
+topic_25 — people:0.045 | armenian:0.038 | armenians:0.035 | said:0.023 | told:0.021 | government:0.020 | left:0.020 | armenia:0.019 | going:0.018 | did:0.016 | children:0.015 | women:0.015 | took:0.015 | russian:0.012 | killed:0.012 | didn:0.012 | population:0.012 | time:0.011 | million:0.011 | came:0.011
+
+topic_26 — ca:0.159 | university:0.063 | organization:0.063 | lines:0.061 | subject:0.054 | posting:0.045 | host:0.043 | nntp:0.042 | edu:0.031 | sale:0.028 | distribution:0.024 | article:0.018 | canada:0.015 | thanks:0.014 | drive:0.011 | james:0.010 | printer:0.010 | richard:0.010 | usa:0.009 | email:0.007
+
+topic_27 — drive:0.074 | scsi:0.052 | 16:0.041 | disk:0.040 | hard:0.032 | drives:0.025 | vs:0.024 | controller:0.021 | bus:0.021 | ide:0.020 | la:0.017 | rom:0.017 | card:0.016 | pc:0.012 | mb:0.011 | driver:0.010 | problem:0.010 | use:0.009 | data:0.009 | bit:0.009
+
+topic_28 — edu:0.124 | posting:0.041 | nntp:0.031 | 000:0.030 | colorado:0.028 | host:0.026 | subject:0.023 | lines:0.016 | ve:0.016 | bike:0.013 | organization:0.013 | right:0.011 | distribution:0.010 | usa:0.010 | article:0.009 | got:0.009 | cwru:0.009 | utexas:0.009 | dead:0.008 | writes:0.008
+
+topic_29 — gun:0.040 | year:0.032 | game:0.031 | team:0.030 | hockey:0.023 | play:0.021 | players:0.020 | league:0.017 | season:0.017 | roger:0.013 | control:0.013 | nhl:0.012 | years:0.012 | firearms:0.011 | second:0.011 | defense:0.011 | police:0.010 | good:0.010 | shot:0.009 | american:0.009
+
+topic_30 — use:0.060 | ___:0.028 | like:0.027 | list:0.021 | systems:0.021 | does:0.020 | used:0.018 | lines:0.014 | research:0.012 | set:0.012 | ibm:0.012 | subject:0.012 | work:0.012 | problems:0.011 | port:0.010 | posting:0.010 | com:0.009 | make:0.009 | know:0.009 | command:0.009
+
+topic_31 — just:0.039 | writes:0.035 | think:0.035 | organization:0.024 | don:0.024 | com:0.024 | lines:0.022 | jim:0.020 | subject:0.018 | right:0.018 | world:0.016 | pro:0.016 | guns:0.014 | did:0.014 | say:0.013 | heard:0.011 | like:0.011 | yes:0.010 | does:0.009 | distribution:0.009
+
+topic_32 — com:0.096 | window:0.045 | subject:0.035 | organization:0.026 | lines:0.025 | does:0.022 | ibm:0.021 | manager:0.020 | know:0.017 | problem:0.015 | time:0.015 | way:0.013 | let:0.011 | writes:0.010 | good:0.009 | try:0.009 | cup:0.009 | posting:0.009 | host:0.008 | value:0.008
+
+topic_33 — 11:0.054 | 23:0.050 | 31:0.036 | access:0.032 | virginia:0.030 | internet:0.030 | 10:0.028 | ray:0.026 | com:0.025 | 16:0.024 | hp:0.022 | 41:0.020 | 12:0.019 | 93:0.018 | 24:0.018 | 42:0.018 | 27:0.016 | 38:0.015 | 18:0.015 | frank:0.015
+
+topic_34 — mr:0.055 | president:0.039 | know:0.032 | don:0.024 | stephanopoulos:0.020 | think:0.019 | house:0.017 | tax:0.017 | going:0.016 | said:0.015 | george:0.014 | like:0.013 | congress:0.012 | file:0.012 | ll:0.011 | white:0.010 | let:0.009 | did:0.009 | yes:0.009 | freedom:0.009
+
+topic_35 — com:0.213 | article:0.075 | writes:0.067 | netcom:0.042 | att:0.024 | don:0.023 | hp:0.021 | good:0.019 | cb:0.016 | gm:0.016 | subject:0.013 | steve:0.012 | vs:0.012 | 1993apr15:0.012 | lines:0.011 | sun:0.010 | want:0.009 | just:0.009 | organization:0.008 | better:0.008
+
+topic_36 — ax:0.763 | g9v:0.115 | max:0.039 | a86:0.019 | b8f:0.012 | au:0.007 | mr:0.005 | 2di:0.004 | 14:0.003 | 1t:0.003 | 25:0.003 | 75u:0.003 | 0d:0.003 | 1d9:0.002 | 75:0.001 | edu:0.001 | wm:0.001 | 0t:0.001 | subject:0.001 | giz:0.001
+
+topic_37 — __:0.061 | apple:0.051 | cleveland:0.042 | freenet:0.029 | cwru:0.028 | lines:0.028 | subject:0.028 | ca:0.026 | com:0.023 | western:0.022 | article:0.020 | writes:0.019 | sun:0.018 | email:0.017 | like:0.016 | network:0.016 | case:0.015 | organization:0.014 | address:0.013 | ___:0.011
+
+topic_38 — just:0.035 | time:0.034 | got:0.023 | said:0.021 | clinton:0.017 | means:0.016 | lines:0.016 | shall:0.014 | make:0.014 | day:0.013 | week:0.011 | ones:0.011 | dod:0.011 | don:0.010 | like:0.010 | subject:0.009 | organization:0.009 | sure:0.009 | com:0.009 | money:0.009
+
+topic_39 — edu:0.201 | cs:0.124 | state:0.044 | article:0.034 | ohio:0.031 | subject:0.030 | writes:0.026 | pitt:0.025 | dept:0.025 | acs:0.024 | university:0.021 | lines:0.020 | organization:0.020 | gordon:0.017 | banks:0.016 | univ:0.015 | win:0.015 | computer:0.015 | science:0.014 | harvard:0.012
+
+topic_40 — jews:0.029 | people:0.028 | war:0.024 | turkish:0.021 | jewish:0.019 | history:0.018 | law:0.013 | church:0.013 | turkey:0.013 | new:0.013 | greek:0.012 | states:0.012 | world:0.012 | military:0.010 | did:0.010 | government:0.010 | israel:0.009 | said:0.009 | country:0.009 | israeli:0.008
+
+topic_41 — space:0.075 | nasa:0.041 | gov:0.029 | cost:0.021 | data:0.020 | launch:0.017 | research:0.015 | commercial:0.014 | moon:0.013 | subject:0.012 | program:0.011 | project:0.011 | new:0.011 | design:0.011 | national:0.010 | organization:0.010 | development:0.010 | com:0.009 | using:0.009 | station:0.009
+
+topic_42 — file:0.054 | program:0.043 | information:0.036 | output:0.030 | entry:0.022 | use:0.020 | email:0.018 | build:0.018 | title:0.015 | technology:0.014 | anonymous:0.013 | info:0.012 | line:0.012 | government:0.012 | law:0.011 | computer:0.011 | section:0.011 | privacy:0.010 | return:0.010 | new:0.010
+
+topic_43 — know:0.032 | just:0.029 | people:0.021 | ms:0.020 | want:0.020 | price:0.017 | right:0.015 | university:0.015 | food:0.014 | purdue:0.012 | center:0.012 | interested:0.011 | nl:0.011 | don:0.011 | lines:0.011 | group:0.010 | need:0.010 | subject:0.010 | good:0.010 | cause:0.009
+
+topic_44 — edu:0.030 | mit:0.029 | games:0.027 | 1993:0.024 | list:0.023 | request:0.018 | 93:0.018 | send:0.018 | information:0.015 | available:0.013 | season:0.012 | john:0.012 | cd:0.011 | sources:0.011 | user:0.011 | source:0.011 | san:0.011 | pub:0.011 | team:0.010 | division:0.010
+
+topic_45 — uk:0.063 | ac:0.056 | server:0.034 | available:0.029 | graphics:0.023 | motif:0.020 | mit:0.019 | number:0.018 | based:0.017 | use:0.017 | sun:0.014 | fi:0.013 | cs:0.012 | support:0.011 | line:0.010 | like:0.010 | com:0.010 | health:0.010 | run:0.009 | don:0.009
+
+topic_46 — edu:0.202 | organization:0.041 | lines:0.033 | toronto:0.030 | cc:0.030 | writes:0.028 | new:0.026 | subject:0.023 | university:0.020 | cs:0.017 | michael:0.015 | mike:0.015 | henry:0.015 | posting:0.015 | columbia:0.014 | utexas:0.013 | nntp:0.013 | host:0.012 | article:0.010 | distribution:0.010
+
+topic_47 — writes:0.074 | article:0.054 | edu:0.051 | just:0.031 | car:0.028 | subject:0.025 | lines:0.022 | organization:0.018 | make:0.014 | runs:0.014 | time:0.014 | right:0.013 | com:0.012 | people:0.011 | really:0.010 | virginia:0.010 | don:0.010 | news:0.010 | actually:0.010 | care:0.009
+
+topic_48 — jesus:0.062 | god:0.050 | bible:0.038 | christian:0.029 | christ:0.027 | men:0.017 | brian:0.016 | organization:0.013 | just:0.012 | subject:0.012 | ed:0.012 | 17:0.012 | life:0.011 | ve:0.011 | christianity:0.011 | women:0.011 | people:0.010 | rutgers:0.010 | way:0.010 | did:0.009
+
+topic_49 — key:0.087 | chip:0.058 | encryption:0.042 | clipper:0.040 | keys:0.033 | 25:0.029 | dos:0.021 | escrow:0.021 | bit:0.019 | security:0.016 | algorithm:0.016 | public:0.015 | des:0.015 | chips:0.015 | data:0.014 | secret:0.013 | serial:0.013 | used:0.013 | widget:0.013 | secure:0.012
+

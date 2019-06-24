@@ -1,0 +1,25 @@
+{
+  "seed": 4242,
+  "sklearn": true,
+  "max_feats": 1000,
+
+  "n_topics": 50,
+  "phi_smooth_sparse_tau": -0.1,
+  "theta_smooth_sparse_tau": -1.0,
+  "num_collection_passes": 15,
+  "num_documents_passes": 1,
+  "batch_size": 250,
+
+  "two_steps": false,
+  "num_collection_passes_step1": 10,
+  "num_collection_passes_step2": 15,
+
+  "num_workers": 12,
+  "device": "cuda:0",
+  "datapath": "./data",
+  "dump_phi": true,
+  "dump_phi_freq": 5,
+  "log_path": "./ndw_log.log",
+  "debug": false,
+  "desc2log": true
+}
