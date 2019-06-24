@@ -1,4 +1,4 @@
-- Train WNTM on word contexts (using prepared data, sampled from wiki-150k):
+- Train pLSA + Smoothing/Sparsing regularizer on word contexts (WNTM task) (using prepared data, sampled from wiki-150k):
 ```
 python3 train.py -c=configs/config.json
 ```
