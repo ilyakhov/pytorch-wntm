@@ -111,12 +111,14 @@ if __name__ == '__main__':
         f'_2steps{two_steps}_num_documents_passes{num_documents_passes}'
     p = os.path.join(dump_phi_folder, p)
 
+    log_perplexity = params.__dict__.get('log_perplexity', False)
+    log_matrix_norms = params.__dict__.get('log_matrix_norms', False)
+
     if two_steps is False:
         logging.info('One-step training...')
         model = WNTM_pLSA(n_topics=n_topics,
                           vocab_size=len(vocab),
                           doc_count=len(docs),
-                          context_size=context_size,
                           batch_size=batch_size,
                           batch_steps=batch_steps,
                           num_collection_passes=epochs,
@@ -128,7 +130,9 @@ if __name__ == '__main__':
                           vocab_stat=vocab_stat,
                           mode=train_mode,
                           dump_phi_freq=params.dump_phi_freq,
-                          dump_phi_path=p
+                          dump_phi_path=p,
+                          log_perplexity=log_perplexity,
+                          log_matrix_norms=log_matrix_norms
                           )
 
         model.run(iterator)
@@ -138,7 +142,6 @@ if __name__ == '__main__':
         model = WNTM_pLSA(n_topics=n_topics,
                           vocab_size=len(vocab),
                           doc_count=len(docs),
-                          context_size=context_size,
                           batch_size=batch_size,
                           batch_steps=batch_steps,
                           num_collection_passes=epochs1,
@@ -150,7 +153,9 @@ if __name__ == '__main__':
                           vocab_stat=vocab_stat,
                           mode=train_mode,
                           dump_phi_freq=params.dump_phi_freq,
-                          dump_phi_path=p
+                          dump_phi_path=p,
+                          log_perplexity=log_perplexity,
+                          log_matrix_norms=log_matrix_norms
                           )
         model.run(iterator)
         model.num_collection_passes = epochs2

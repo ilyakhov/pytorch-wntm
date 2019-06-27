@@ -22,5 +22,7 @@
   "dump_phi_freq": 5,
   "log_path": "./log.log",
   "debug": false,
-  "desc2log": true
+  "desc2log": true,
+  "log_matrix_norms": true,
+  "log_perplexity": false
 }

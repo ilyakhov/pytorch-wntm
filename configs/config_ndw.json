@@ -3,10 +3,10 @@
   "sklearn": true,
   "max_feats": 1000,
 
-  "n_topics": 50,
+  "n_topics": 30,
   "phi_smooth_sparse_tau": -0.1,
-  "theta_smooth_sparse_tau": -1.0,
-  "num_collection_passes": 15,
+  "theta_smooth_sparse_tau": -2,
+  "num_collection_passes": 10,
   "num_documents_passes": 1,
   "batch_size": 250,
 
@@ -21,5 +21,7 @@
   "dump_phi_freq": 5,
   "log_path": "./ndw_log.log",
   "debug": false,
-  "desc2log": true
+  "desc2log": true,
+  "log_matrix_norms": true,
+  "log_perplexity": true
 }

@@ -39,14 +39,14 @@ class WNTMDataSet(Dataset):
                 context = context[:self.context_size]
             # raise Exception('oversized_context!')
 
-        real_context_len = len([w for w in context if w != self.pad_inx])
-        real_context_len = torch.tensor(real_context_len,
-                                        dtype=self.dtype,
-                                        device=self.device)
+        # real_context_len = len([w for w in context if w != self.pad_inx])
+        # real_context_len = torch.tensor(real_context_len,
+        #                                 dtype=self.dtype,
+        #                                 device=self.device)
         n_dw = torch.ones(self.context_size)
         context = torch.tensor(context, dtype=self.dtype, device=self.device)
 
-        return n_dw, i, context, real_context_len
+        return n_dw, i, context
 
 
 class n_dwDataSet(Dataset):

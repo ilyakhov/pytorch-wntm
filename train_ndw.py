@@ -116,6 +116,9 @@ if __name__ == '__main__':
         f'_2steps{two_steps}_num_documents_passes{num_documents_passes}'
     p = os.path.join(dump_phi_folder, p)
 
+    log_perplexity = params.__dict__.get('log_perplexity', False)
+    log_matrix_norms = params.__dict__.get('log_matrix_norms', False)
+
     if two_steps is False:
         logging.info('One-step training...')
         model = pLSA(n_topics=n_topics,
@@ -130,7 +133,10 @@ if __name__ == '__main__':
                      phi_smooth_sparse_tau=phi_smooth_sparse_tau,
                      theta_smooth_sparse_tau=theta_smooth_sparse_tau,
                      dump_phi_freq=params.dump_phi_freq,
-                     dump_phi_path=p)
+                     dump_phi_path=p,
+                     log_perplexity=log_perplexity,
+                     log_matrix_norms=log_matrix_norms
+                     )
 
         model.run(iterator)
         logging.info(model.phi_log)
@@ -148,7 +154,10 @@ if __name__ == '__main__':
                      phi_smooth_sparse_tau=.0,
                      theta_smooth_sparse_tau=.0,
                      dump_phi_freq=params.dump_phi_freq,
-                     dump_phi_path=p)
+                     dump_phi_path=p,
+                     log_perplexity=log_perplexity,
+                     log_matrix_norms=log_matrix_norms
+                     )
         model.run(iterator)
         model.num_collection_passes = epochs2
         model.phi_smooth_sparse_tau = phi_smooth_sparse_tau
