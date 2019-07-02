@@ -104,6 +104,7 @@ if __name__ == '__main__':
     if not os.path.exists(dump_phi_folder):
         make_directory(dump_phi_folder)
     p = f'v4_{dataset_size}_ntopics{n_topics}_phi_' \
+        f'seed{seed}_'\
         f'reg-phi{phi_smooth_sparse_tau}'\
         f'_reg-thet{theta_smooth_sparse_tau}' \
         f'_epochs{epochs}' \

@@ -4,11 +4,12 @@
   "max_feats": 1000,
 
   "n_topics": 30,
-  "phi_smooth_sparse_tau": -0.1,
+  "phi_smooth_sparse_tau": -1.0,
   "theta_smooth_sparse_tau": -2,
-  "num_collection_passes": 10,
+  "num_collection_passes": 50,
   "num_documents_passes": 1,
   "batch_size": 250,
+  "train_mode": "v1",
 
   "two_steps": false,
   "num_collection_passes_step1": 10,

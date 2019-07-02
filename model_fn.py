@@ -65,17 +65,13 @@ class pLSA:
 
         self.__init_matrices()
         self.__init_aux_vars()
-        if self.phi_smooth_sparse_tau is not None and\
-                self.theta_smooth_sparse_tau is not None:
-            self.vocab_stat = vocab_stat
+
+        self.vocab_stat = vocab_stat
         self.__init_regularizers()
 
         self.phi_log = []
         self.theta_log = []
         self.perplexity_log = []
-
-        self.run = self.run
-        self.__rectify = self.__rectify
 
         if dump_phi_freq:
             self.dump_phi_freq = dump_phi_freq
@@ -130,13 +126,6 @@ class pLSA:
             # norm
             self.phi /= self.phi.sum(dim=0, keepdim=True)
             self.theta /= self.theta.sum(dim=0, keepdim=True)
-
-            # drop nans
-            # self.phi = torch.where(self.phi != self.phi, self.zero, self.phi)
-            # self.theta = torch.where(self.theta != self.theta, self.zero,
-            #                          self.theta)
-            # assert torch.sum(torch.isnan(self.phi)) == 0
-            # assert torch.sum(torch.isnan(self.theta)) == 0
 
             assert not np.any(
                 torch.sum(torch.isnan(self.phi)).numpy() > 0)
@@ -194,6 +183,8 @@ class pLSA:
                 old_theta = self.theta.cpu()
             self.m_step_smoothed_sparsed()
 
+            self.__init_aux_vars()
+
             # phi/theta norms logging
             if self.log_matrix_norms is True:
                 phi_norm = \
@@ -206,15 +197,16 @@ class pLSA:
                 self.phi_log.append(phi_norm.numpy())
                 self.theta_log.append(theta_norm.numpy())
 
-            # perplexity logging
-            if self.log_perplexity is True:
-                self.perplexity_log.append(self.perplexity())
-
                 logging.info(f'Phi norm: {self.phi_log[self.steps_trained]}; '
                              f'step: {self.steps_trained}')
                 logging.info(
                     f'Theta norm: {self.theta_log[self.steps_trained]}; '
                     f'step: {self.steps_trained}')
+
+            # perplexity logging
+            if self.log_perplexity is True:
+                self.perplexity_log.append(self.perplexity())
+
                 logging.info(f'Perplexity: '
                              f'{self.perplexity_log[self.steps_trained]}; '
                              f'step: {self.steps_trained}')
@@ -328,8 +320,8 @@ class pLSA:
                                            device=self.device)
             grouped_res = grouped_res.scatter_add_(0,
                 ordering_labels.cuda(self.device), samples.cuda(self.device))
-            grouped_res = grouped_res / \
-                          ordering_count.float().cuda().unsqueeze(1)
+            # grouped_res = grouped_res / \
+            #               ordering_count.float().cuda().unsqueeze(1)
             return grouped_res, true_unique_labels
 
     def __rectify(self, t):
@@ -381,7 +373,7 @@ class pLSA:
 
     def m_step(self):
         """
-        Rational EM. Not tested enough!
+        Rational EM. The same is "smoothed/sparsed" with reg_tau=0.0
         :return:
         """
         with torch.cuda.device(self.device):
